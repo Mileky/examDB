@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS users
     phone             VARCHAR(20),
     registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
+CREATE INDEX users_first_name_last_name_idx ON users (first_name, last_name);
 
 -- Создание адресов
 CREATE TABLE IF NOT EXISTS addresses
@@ -52,6 +53,7 @@ CREATE TABLE IF NOT EXISTS products
     FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE,
     FOREIGN KEY (supplier_id) REFERENCES suppliers (id) ON DELETE SET NULL
 );
+CREATE INDEX products_product_name_idx ON products (product_name);
 
 -- Создание заказов
 CREATE TABLE IF NOT EXISTS orders
